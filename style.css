@@ -1,6 +1,11 @@
 body {
     margin: 0;
 }
+
+h1 {
+    font-size: 200%;
+}
+
 .header {
     height: 30vh;
     width: 100vw;

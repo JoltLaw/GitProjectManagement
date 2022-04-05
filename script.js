@@ -52,8 +52,8 @@ function colorWrongOrbs(orb1, orb2, orb3, orb4) {
       orb.style.backgroundColor = `rgb${backGroundColor}`;
       if (backGroundColor == RGB) {
           orb.addEventListener("click", Correctanswer);
-      } else if (orb.style.backgroundColor == "rgb(255, 255, 255)") {
-          while (orb.style.backgroundColor == "rgb(255, 255, 255)") {
+      } else if (orb.style.backgroundColor >= "rgb(255, 255, 255)") {
+          while (orb.style.backgroundColor >= "rgb(255, 255, 255)") {
             let backGroundColor = `(${numberGen()}${numberGen()}${numberGen()}, ${numberGen()}${numberGen()}${numberGen()}, ${numberGen()}${numberGen()}${numberGen()})`;
             orb.style.backgroundColor = `rgb${backGroundColor}`;
           }
@@ -74,7 +74,7 @@ function addColors() {
     if (orb <= 2) {
         orb = color1;
         orb.style.backgroundColor = `rgb${RGB}`;
-        if (orb.style.backgroundColor == "rgb(255, 255, 255)") {
+        if (orb.style.backgroundColor >= "rgb(255, 255, 255)") {
             generateColor();
         }
     else {
@@ -85,7 +85,7 @@ function addColors() {
     else if (orb <= 4) {
         orb = color2;
         orb.style.backgroundColor = `rgb${RGB}`;
-        if (orb.style.backgroundColor == "rgb(255, 255, 255)") {
+        if (orb.style.backgroundColor >= "rgb(255, 255, 255)") {
             generateColor();
         }
     else {
@@ -96,7 +96,7 @@ function addColors() {
     else if (orb <= 6) {
         orb = color3;
         orb.style.backgroundColor = `rgb${RGB}`;
-        if (orb.style.backgroundColor == "rgb(255, 255, 255)") {
+        if (orb.style.backgroundColor >= "rgb(255, 255, 255)") {
             generateColor();
         }
     else {
@@ -107,7 +107,7 @@ function addColors() {
     else if (orb <= 8) {
         orb = color4;
         orb.style.backgroundColor = `rgb${RGB}`;
-        if (orb.style.backgroundColor == "rgb(255, 255, 255)") {
+        if (orb.style.backgroundColor >= "rgb(255, 255, 255)") {
             generateColor();
         }
     else {
@@ -118,7 +118,7 @@ function addColors() {
     else if (orb <= 10) {
         orb = color5;
         orb.style.backgroundColor = `rgb${RGB}`;
-        if (orb.style.backgroundColor == "rgb(255, 255, 255)") {
+        if (orb.style.backgroundColor >= "rgb(255, 255, 255)") {
             generateColor();
         }
     else {
