@@ -71,7 +71,6 @@ function colorWrongOrbs(orb1, orb2, orb3, orb4) {
 // Adding color to correct orb, and making sure that the color loads properly
 function addColors() {
     orb = Math.floor(Math.random() * 10) + 1;
-    console.log(orb);
     if (orb <= 2) {
         orb = color1;
         orb.style.backgroundColor = `rgb${RGB}`;
