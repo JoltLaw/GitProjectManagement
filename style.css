@@ -38,6 +38,7 @@ color: rgb(48, 121, 121);
     width: 10vw;
     height: 10vw;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .modal {
