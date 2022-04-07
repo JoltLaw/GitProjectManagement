@@ -9,6 +9,8 @@ const modal = document.getElementById("modal");
 const Correct = document.getElementById("Correct");
 const Wrong = document.getElementById("Wrong");
 
+
+
 // Js variables
 let RGB;
 let orbObj;
@@ -18,9 +20,16 @@ let wrongOrbs = [];
 
 // Generate numbers for rgb colors
 function numberGen() {
-    let number = Math.floor(Math.random() * 10);
-    return number;
-}
+    let number1 = Math.floor(Math.random() * 10);
+    let number2 = Math.floor(Math.random() * 10);
+    let number3 = Math.floor(Math.random() * 10);
+    let fullNumber = `${number1}${number2}${number3}`
+    if (255 <= parseInt(fullNumber)) {
+        return numberGen();
+    } else {
+        return fullNumber;
+    }}
+
 
 // edit HTML for the correct answer
 function Correctanswer() {
@@ -30,7 +39,8 @@ setTimeout(function(){
     modal.hidden = true;
     Correct.hidden = true;
 }, 750);
-generateColor(orb);
+cleanLastGame();
+generateColor();
 }
 
 // edit HTML for a wrong answer
@@ -41,30 +51,21 @@ function wrongAnswer () {
         modal.hidden = true;
         Wrong.hidden = true;
     }, 750);
+    cleanLastGame();3
     generateColor();
 }
 
 // Adding color to the other orbs
-function colorWrongOrbs(orb1, orb2, orb3, orb4) {
-    wrongOrbs.push(orb1, orb2, orb3, orb4);
+function colorWrongOrbs() {
     wrongOrbs.forEach((orb) => {
-      let backGroundColor = `(${numberGen()}${numberGen()}${numberGen()}, ${numberGen()}${numberGen()}${numberGen()}, ${numberGen()}${numberGen()}${numberGen()})`;
-      orb.style.backgroundColor = `rgb${backGroundColor}`;
-      if (backGroundColor == RGB) {
-          orb.addEventListener("click", Correctanswer);
-      } else if (orb.style.backgroundColor == "rgb(255, 255, 255)") {
-          while (orb.style.backgroundColor == "rgb(255, 255, 255)") {
-            let backGroundColor = `(${numberGen()}${numberGen()}${numberGen()}, ${numberGen()}${numberGen()}${numberGen()}, ${numberGen()}${numberGen()}${numberGen()})`;
-            orb.style.backgroundColor = `rgb${backGroundColor}`;
-          }
-          if (backGroundColor == RGB) {
-            orb.addEventListener("click", Correctanswer);
-        }   else {
-            orb.addEventListener("click", wrongAnswer);
-        }
-      } else {
-          orb.addEventListener("click", wrongAnswer);
-      }
+<
+    let redScaleWR = `${numberGen()},`;
+    let greenScaleWR = ` ${numberGen()},`;
+    let blueScaleWR = ` ${numberGen()}`;
+    orb.style.backgroundColor = `rgb(${redScaleWR}${greenScaleWR}${blueScaleWR})`;
+    orb.addEventListener("click", wrongAnswer);
+      
+
     });
 }
 
@@ -72,70 +73,60 @@ function colorWrongOrbs(orb1, orb2, orb3, orb4) {
 function addColors() {
     orb = Math.floor(Math.random() * 10) + 1;
     if (orb <= 2) {
-        orb = color1;
-        orb.style.backgroundColor = `rgb${RGB}`;
-        if (orb.style.backgroundColor == "rgb(255, 255, 255)") {
-            generateColor();
-        }
-    else {
-    orb.addEventListener("click", Correctanswer);
-    colorWrongOrbs(color2, color3, color4, color5);
-    }
+
+        color1.style.backgroundColor = targetColor.textContent;
+        color1.addEventListener("click", Correctanswer);
+    wrongOrbs.push(color2, color3, color4, color5);
+    colorWrongOrbs();
     } 
     else if (orb <= 4) {
-        orb = color2;
-        orb.style.backgroundColor = `rgb${RGB}`;
-        if (orb.style.backgroundColor == "rgb(255, 255, 255)") {
-            generateColor();
-        }
-    else {
-    orb.addEventListener("click", Correctanswer);
-    colorWrongOrbs(color1, color3, color4, color5);
+        color2.style.backgroundColor = targetColor.textContent;
+        color2.addEventListener("click", Correctanswer);
+    wrongOrbs.push(color1, color3, color4, color5);
+    colorWrongOrbs();
+
+
     }
-    }   
+      
     else if (orb <= 6) {
-        orb = color3;
-        orb.style.backgroundColor = `rgb${RGB}`;
-        if (orb.style.backgroundColor == "rgb(255, 255, 255)") {
-            generateColor();
-        }
-    else {
-    orb.addEventListener("click", Correctanswer);
-    colorWrongOrbs(color1, color2, color4, color5);
+        color3.style.backgroundColor = targetColor.textContent;
+        color3.addEventListener("click", Correctanswer);
+    wrongOrbs.push(color1, color2, color4, color5);
+    colorWrongOrbs();
+
     }
-    }   
+       
     else if (orb <= 8) {
-        orb = color4;
-        orb.style.backgroundColor = `rgb${RGB}`;
-        if (orb.style.backgroundColor == "rgb(255, 255, 255)") {
-            generateColor();
-        }
-    else {
-    orb.addEventListener("click", Correctanswer);
-    colorWrongOrbs(color1, color2, color3, color5);
-    }
+        color4.style.backgroundColor = targetColor.textContent;
+        color4.addEventListener("click", Correctanswer);
+    wrongOrbs.push(color1, color2, color3, color5);
+    colorWrongOrbs();
     }   
     else if (orb <= 10) {
-        orb = color5;
-        orb.style.backgroundColor = `rgb${RGB}`;
-        if (orb.style.backgroundColor == "rgb(255, 255, 255)") {
-            generateColor();
-        }
-    else {
-    orb.addEventListener("click", Correctanswer);
-    colorWrongOrbs(color1, color2, color3, color4);
+        color5.style.backgroundColor = targetColor.textContent;
+        color5.addEventListener("click", Correctanswer);
+    wrongOrbs.push(color1, color2, color3, color4);
+    colorWrongOrbs();
+
     }
-    }
+} 
+
+function cleanLastGame() {
+    orbArray.forEach((orb) => {
+        orb.removeEventListener("click", Correctanswer);
+        orb.removeEventListener("click", wrongAnswer);
+        orb.style.backgroundColor = ""
+        wrongOrbs = [];
+    })
 }
 
 // Starting up the game
 function generateColor(orb) {
-    orbArray.forEach((orb) => {
-        orb.removeEventListener("click", Correctanswer);
-        orb.removeEventListener("click", wrongAnswer);
-    });
-    RGB = `(${numberGen()}${numberGen()}${numberGen()}, ${numberGen()}${numberGen()}${numberGen()}, ${numberGen()}${numberGen()}${numberGen()})`;
-    targetColor.textContent = `Color:${RGB}`;
+    // cleanLastGame();
+    let redScale = `${numberGen()}`
+    let greenScale = `${numberGen()}`
+    let blueScale = `${numberGen()}`
+    targetColor.textContent = `rgb(${redScale}, ${greenScale}, ${blueScale})`;
     addColors();
     
 }
