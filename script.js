@@ -58,12 +58,14 @@ function wrongAnswer () {
 // Adding color to the other orbs
 function colorWrongOrbs() {
     wrongOrbs.forEach((orb) => {
+<
     let redScaleWR = `${numberGen()},`;
     let greenScaleWR = ` ${numberGen()},`;
     let blueScaleWR = ` ${numberGen()}`;
     orb.style.backgroundColor = `rgb(${redScaleWR}${greenScaleWR}${blueScaleWR})`;
     orb.addEventListener("click", wrongAnswer);
       
+
     });
 }
 
@@ -71,6 +73,7 @@ function colorWrongOrbs() {
 function addColors() {
     orb = Math.floor(Math.random() * 10) + 1;
     if (orb <= 2) {
+
         color1.style.backgroundColor = targetColor.textContent;
         color1.addEventListener("click", Correctanswer);
     wrongOrbs.push(color2, color3, color4, color5);
@@ -81,6 +84,8 @@ function addColors() {
         color2.addEventListener("click", Correctanswer);
     wrongOrbs.push(color1, color3, color4, color5);
     colorWrongOrbs();
+
+
     }
       
     else if (orb <= 6) {
@@ -88,6 +93,7 @@ function addColors() {
         color3.addEventListener("click", Correctanswer);
     wrongOrbs.push(color1, color2, color4, color5);
     colorWrongOrbs();
+
     }
        
     else if (orb <= 8) {
@@ -101,6 +107,7 @@ function addColors() {
         color5.addEventListener("click", Correctanswer);
     wrongOrbs.push(color1, color2, color3, color4);
     colorWrongOrbs();
+
     }
 } 
 
