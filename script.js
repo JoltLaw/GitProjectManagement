@@ -8,9 +8,6 @@ const color5 = document.getElementById("color5");
 const modal = document.getElementById("modal");
 const Correct = document.getElementById("Correct");
 const Wrong = document.getElementById("Wrong");
-
-
-
 // Js variables
 let RGB;
 let orbObj;
@@ -51,21 +48,18 @@ function wrongAnswer () {
         modal.hidden = true;
         Wrong.hidden = true;
     }, 750);
-    cleanLastGame();3
+    cleanLastGame();
     generateColor();
 }
 
 // Adding color to the other orbs
 function colorWrongOrbs() {
     wrongOrbs.forEach((orb) => {
-<
     let redScaleWR = `${numberGen()},`;
     let greenScaleWR = ` ${numberGen()},`;
     let blueScaleWR = ` ${numberGen()}`;
     orb.style.backgroundColor = `rgb(${redScaleWR}${greenScaleWR}${blueScaleWR})`;
     orb.addEventListener("click", wrongAnswer);
-      
-
     });
 }
 
@@ -73,7 +67,6 @@ function colorWrongOrbs() {
 function addColors() {
     orb = Math.floor(Math.random() * 10) + 1;
     if (orb <= 2) {
-
         color1.style.backgroundColor = targetColor.textContent;
         color1.addEventListener("click", Correctanswer);
     wrongOrbs.push(color2, color3, color4, color5);
@@ -84,18 +77,13 @@ function addColors() {
         color2.addEventListener("click", Correctanswer);
     wrongOrbs.push(color1, color3, color4, color5);
     colorWrongOrbs();
-
-
-    }
-      
+    }  
     else if (orb <= 6) {
         color3.style.backgroundColor = targetColor.textContent;
         color3.addEventListener("click", Correctanswer);
     wrongOrbs.push(color1, color2, color4, color5);
     colorWrongOrbs();
-
-    }
-       
+    }  
     else if (orb <= 8) {
         color4.style.backgroundColor = targetColor.textContent;
         color4.addEventListener("click", Correctanswer);
@@ -107,10 +95,10 @@ function addColors() {
         color5.addEventListener("click", Correctanswer);
     wrongOrbs.push(color1, color2, color3, color4);
     colorWrongOrbs();
-
     }
 } 
 
+// cleaning up event listeners, background color and arrays
 function cleanLastGame() {
     orbArray.forEach((orb) => {
         orb.removeEventListener("click", Correctanswer);
