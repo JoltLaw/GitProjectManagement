@@ -11,6 +11,9 @@ body {
     align-items: center;
 }
 
+h1 {
+    font-size: 200%;
+}
 
 .modes{
 width: 100vw;
